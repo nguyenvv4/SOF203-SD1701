@@ -5,6 +5,7 @@
 package sof203.sd1701.view;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sof203.sd1701.entity.HoaDon;
 import sof203.sd1701.service.HoaDonService;
@@ -19,11 +20,11 @@ public class HoaDonView extends javax.swing.JFrame {
      * Creates new form HoaDonView
      */
     private HoaDonService hoaDonService = new HoaDonService();
-
+    
     public HoaDonView() {
         initComponents();
     }
-
+    
     public void loadData(ArrayList<HoaDon> listHoaDon) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) tblHoaDon.getModel();
         defaultTableModel.setRowCount(0);
@@ -31,7 +32,8 @@ public class HoaDonView extends javax.swing.JFrame {
             defaultTableModel.addRow(new Object[]{
                 hd.getTen(),
                 hd.getSoLuong(),
-                hd.getLoaiVe()
+                hd.getLoaiVe(),
+                hd.thanhTien()
             });
         }
     }
@@ -48,6 +50,14 @@ public class HoaDonView extends javax.swing.JFrame {
         btnLoadData = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtHoTen = new javax.swing.JTextField();
+        txtSoLuong = new javax.swing.JTextField();
+        cboLoaiVe = new javax.swing.JComboBox<>();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,27 +84,97 @@ public class HoaDonView extends javax.swing.JFrame {
                 "Ho Ten", "So Luong", "Loai Ve", "Thanh Tien"
             }
         ));
+        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHoaDon);
+
+        jLabel1.setText("Ho ten");
+
+        jLabel2.setText("So luong");
+
+        jLabel3.setText("Loai ve");
+
+        cboLoaiVe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hoc Lai", "Hoc Di" }));
+
+        btnAdd.setText("Add");
+        btnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddMouseClicked(evt);
+            }
+        });
+
+        btnUpdate.setText("Update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(545, 545, 545)
+                        .addComponent(btnAdd))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(63, 63, 63)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3))
+                            .addGap(80, 80, 80)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtHoTen)
+                                .addComponent(txtSoLuong)
+                                .addComponent(cboLoaiVe, 0, 246, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(btnLoadData)
                 .addGap(200, 200, 200))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(567, 567, 567)
+                .addComponent(btnUpdate)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLoadData))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLoadData)
+                            .addComponent(btnAdd)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cboLoaiVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnUpdate)))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,6 +190,40 @@ public class HoaDonView extends javax.swing.JFrame {
         loadData(list);
 
     }//GEN-LAST:event_btnLoadDataMouseClicked
+    
+    public HoaDon getModel() {
+        String hoTen = txtHoTen.getText();
+        Integer soLuong = Integer.parseInt(txtSoLuong.getText());
+        String loaiVe = (String) cboLoaiVe.getSelectedItem();
+        return new HoaDon(hoTen, soLuong, loaiVe);
+        
+    }
+    private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
+        // TODO add your handling code here:
+        HoaDon hoaDonNew = getModel();
+        String result = hoaDonService.addNew(hoaDonNew);
+        JOptionPane.showMessageDialog(this, result);
+        loadData(hoaDonService.getList());
+    }//GEN-LAST:event_btnAddMouseClicked
+
+    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
+        // TODO add your handling code here:
+        int index = tblHoaDon.getSelectedRow();
+        HoaDon hoaDonChiTiet = hoaDonService.getList().get(index);
+        txtHoTen.setText(hoaDonChiTiet.getTen());
+        txtSoLuong.setText(hoaDonChiTiet.getSoLuong().toString());
+        cboLoaiVe.setSelectedItem(hoaDonChiTiet.getLoaiVe());
+        System.out.println(hoaDonChiTiet.toString());
+    }//GEN-LAST:event_tblHoaDonMouseClicked
+
+    private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
+        // TODO add your handling code here:
+        int index = tblHoaDon.getSelectedRow();
+        HoaDon hoaDon = getModel();
+        String result = hoaDonService.update(index, hoaDon);
+        JOptionPane.showMessageDialog(this, result);
+        loadData(hoaDonService.getList());
+    }//GEN-LAST:event_btnUpdateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -147,8 +261,16 @@ public class HoaDonView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnLoadData;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cboLoaiVe;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHoaDon;
+    private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtSoLuong;
     // End of variables declaration//GEN-END:variables
 }

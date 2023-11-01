@@ -46,4 +46,17 @@ public class HoaDon {
         this.loaiVe = loaiVe;
     }
 
+    public Double thanhTien() {
+        if (loaiVe.equals("Hoc Lai")) {
+            return soLuong.doubleValue() * 80000;
+        } else {
+            return soLuong.doubleValue() * 100000;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "HoaDon{" + "ten=" + ten + ", soLuong=" + soLuong + ", loaiVe=" + loaiVe + '}';
+    }
+
 }
