@@ -29,10 +29,20 @@ public class HoaDonService {
         list.add(hoaDon);
         return "Them thanh cong";
     }
-    
-    public  String update(int index , HoaDon hoaDon){
+
+    public String update(int index, HoaDon hoaDon) {
         list.set(index, hoaDon);
         return "Update thanh cong";
+    }
+
+    public ArrayList<HoaDon> searchByName(String name) {
+        ArrayList<HoaDon> listHoaDonByName = new ArrayList<>();
+        for(HoaDon hoaDon : list){
+            if (hoaDon.getTen().equals(name)) {
+                listHoaDonByName.add(hoaDon);
+            }
+        }
+        return listHoaDonByName;
     }
 
 }
