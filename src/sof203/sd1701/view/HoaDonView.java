@@ -20,16 +20,17 @@ public class HoaDonView extends javax.swing.JFrame {
      * Creates new form HoaDonView
      */
     private HoaDonService hoaDonService = new HoaDonService();
-    
+
     public HoaDonView() {
         initComponents();
     }
-    
+
     public void loadData(ArrayList<HoaDon> listHoaDon) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) tblHoaDon.getModel();
         defaultTableModel.setRowCount(0);
         for (HoaDon hd : listHoaDon) {
             defaultTableModel.addRow(new Object[]{
+                hd.getId(),
                 hd.getTen(),
                 hd.getSoLuong(),
                 hd.getLoaiVe(),
@@ -76,13 +77,13 @@ public class HoaDonView extends javax.swing.JFrame {
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Ho Ten", "So Luong", "Loai Ve", "Thanh Tien"
+                "Id", "Ho Ten", "So Luong", "Loai Ve", "Thanh Tien"
             }
         ));
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,20 +203,20 @@ public class HoaDonView extends javax.swing.JFrame {
         loadData(list);
 
     }//GEN-LAST:event_btnLoadDataMouseClicked
-    
+
     public HoaDon getModel() {
         String hoTen = txtHoTen.getText();
         Integer soLuong = Integer.parseInt(txtSoLuong.getText());
         String loaiVe = (String) cboLoaiVe.getSelectedItem();
-        return new HoaDon(hoTen, soLuong, loaiVe);
-        
+        return new HoaDon(1, hoTen, soLuong, loaiVe);
+
     }
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
         // TODO add your handling code here:
-        HoaDon hoaDonNew = getModel();
-        String result = hoaDonService.addNew(hoaDonNew);
-        JOptionPane.showMessageDialog(this, result);
-        loadData(hoaDonService.getList());
+//        HoaDon hoaDonNew = getModel();
+//        String result = hoaDonService.addNew(hoaDonNew);
+//        JOptionPane.showMessageDialog(this, result);
+//        loadData(hoaDonService.getList());
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
@@ -230,18 +231,18 @@ public class HoaDonView extends javax.swing.JFrame {
 
     private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
         // TODO add your handling code here:
-        int index = tblHoaDon.getSelectedRow();
-        HoaDon hoaDon = getModel();
-        String result = hoaDonService.update(index, hoaDon);
-        JOptionPane.showMessageDialog(this, result);
-        loadData(hoaDonService.getList());
+//        int index = tblHoaDon.getSelectedRow();
+//        HoaDon hoaDon = getModel();
+//        String result = hoaDonService.update(index, hoaDon);
+//        JOptionPane.showMessageDialog(this, result);
+//        loadData(hoaDonService.getList());
     }//GEN-LAST:event_btnUpdateMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
         // TODO add your handling code here:
-        String name = txtHoTen.getText();
-        ArrayList<HoaDon> listHoaDon = hoaDonService.searchByName(name);
-        loadData(listHoaDon);
+//        String name = txtHoTen.getText();
+//        ArrayList<HoaDon> listHoaDon = hoaDonService.searchByName(name);
+//        loadData(listHoaDon);
     }//GEN-LAST:event_btnSearchMouseClicked
 
     /**

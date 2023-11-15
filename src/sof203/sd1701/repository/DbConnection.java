@@ -14,9 +14,15 @@ public class DbConnection {
 
     public static final String HOSTNAME = "localhost";
     public static final String PORT = "1433";
-    public static final String DBNAME = "ASM_SOF203";
+    public static final String DBNAME = "SOF203_SD1701";
     public static final String USERNAME = "sa";
     public static final String PASSWORD = "Password.1";
+    /*
+    host name: localhost
+    port mặc định là 1433
+    DBNAME: tên database của mình
+    
+    */
 
     /**
      * Get connection to MSSQL Server
@@ -41,5 +47,9 @@ public class DbConnection {
     public static void main(String[] args) {
         getConnection();
     }
+    
+    /*
+    
+    */
 
 }

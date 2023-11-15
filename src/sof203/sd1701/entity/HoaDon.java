@@ -10,16 +10,30 @@ package sof203.sd1701.entity;
  */
 public class HoaDon {
 
+    private Integer id;
+
     private String ten;
 
     private Integer soLuong;
 
     private String loaiVe;
 
-    public HoaDon(String ten, Integer soLuong, String loaiVe) {
+    public HoaDon(Integer id, String ten, Integer soLuong, String loaiVe) {
+        this.id = id;
         this.ten = ten;
         this.soLuong = soLuong;
         this.loaiVe = loaiVe;
+    }
+
+    public HoaDon() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTen() {

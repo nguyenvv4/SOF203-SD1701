@@ -6,6 +6,7 @@ package sof203.sd1701.service;
 
 import java.util.ArrayList;
 import sof203.sd1701.entity.HoaDon;
+import sof203.sd1701.repository.HoaDonRepository;
 
 /**
  *
@@ -13,36 +14,29 @@ import sof203.sd1701.entity.HoaDon;
  */
 public class HoaDonService {
 
-    ArrayList<HoaDon> list = new ArrayList<>();
-
-    public HoaDonService() {
-        list.add(new HoaDon("Nguyen Van A", 10, "Hoc Lai"));
-        list.add(new HoaDon("Nguyen Van B", 10, "Hoc Di"));
-        list.add(new HoaDon("Nguyen Van x", 10, "Hoc Lai 1"));
-    }
+    HoaDonRepository hoaDonRepository = new HoaDonRepository();
 
     public ArrayList<HoaDon> getList() {
-        return list;
+        return hoaDonRepository.getList();
     }
 
-    public String addNew(HoaDon hoaDon) {
-        list.add(hoaDon);
-        return "Them thanh cong";
-    }
-
-    public String update(int index, HoaDon hoaDon) {
-        list.set(index, hoaDon);
-        return "Update thanh cong";
-    }
-
-    public ArrayList<HoaDon> searchByName(String name) {
-        ArrayList<HoaDon> listHoaDonByName = new ArrayList<>();
-        for(HoaDon hoaDon : list){
-            if (hoaDon.getTen().equals(name)) {
-                listHoaDonByName.add(hoaDon);
-            }
-        }
-        return listHoaDonByName;
-    }
-
+//    public String addNew(HoaDon hoaDon) {
+//        list.add(hoaDon);
+//        return "Them thanh cong";
+//    }
+//
+//    public String update(int index, HoaDon hoaDon) {
+//        list.set(index, hoaDon);
+//        return "Update thanh cong";
+//    }
+//
+//    public ArrayList<HoaDon> searchByName(String name) {
+//        ArrayList<HoaDon> listHoaDonByName = new ArrayList<>();
+//        for(HoaDon hoaDon : list){
+//            if (hoaDon.getTen().equals(name)) {
+//                listHoaDonByName.add(hoaDon);
+//            }
+//        }
+//        return listHoaDonByName;
+//    }
 }
