@@ -30,13 +30,9 @@ public class HoaDonService {
 //        return "Update thanh cong";
 //    }
 //
-//    public ArrayList<HoaDon> searchByName(String name) {
-//        ArrayList<HoaDon> listHoaDonByName = new ArrayList<>();
-//        for(HoaDon hoaDon : list){
-//            if (hoaDon.getTen().equals(name)) {
-//                listHoaDonByName.add(hoaDon);
-//            }
-//        }
-//        return listHoaDonByName;
-//    }
+    public ArrayList<HoaDon> searchByName(String name) {
+        // truyen thong tin sang repo de lay du lieu
+        ArrayList<HoaDon> listHoaDonByName = hoaDonRepository.searchByName(name);
+        return listHoaDonByName;
+    }
 }

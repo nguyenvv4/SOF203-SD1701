@@ -240,9 +240,11 @@ public class HoaDonView extends javax.swing.JFrame {
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
         // TODO add your handling code here:
-//        String name = txtHoTen.getText();
-//        ArrayList<HoaDon> listHoaDon = hoaDonService.searchByName(name);
-//        loadData(listHoaDon);
+        // lay thong tin tren form
+        String name = txtHoTen.getText();
+        // truyen thong tin sang service 
+        ArrayList<HoaDon> listHoaDon = hoaDonService.searchByName(name);
+        loadData(listHoaDon);
     }//GEN-LAST:event_btnSearchMouseClicked
 
     /**
