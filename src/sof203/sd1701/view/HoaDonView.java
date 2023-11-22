@@ -60,6 +60,8 @@ public class HoaDonView extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,44 +124,51 @@ public class HoaDonView extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Id");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(545, 545, 545)
+                            .addGap(504, 504, 504)
                             .addComponent(btnAdd))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
+                                .addGap(15, 15, 15)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
                                 .addGap(80, 80, 80)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtHoTen)
                                     .addComponent(txtSoLuong)
-                                    .addComponent(cboLoaiVe, 0, 246, Short.MAX_VALUE)))))
+                                    .addComponent(cboLoaiVe, 0, 246, Short.MAX_VALUE)
+                                    .addComponent(txtId)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(567, 567, 567)
+                        .addGap(504, 504, 504)
                         .addComponent(btnUpdate)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch)
                     .addComponent(btnLoadData))
-                .addGap(200, 200, 200))
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,7 +196,7 @@ public class HoaDonView extends javax.swing.JFrame {
                             .addComponent(btnSearch))))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -205,18 +214,19 @@ public class HoaDonView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoadDataMouseClicked
 
     public HoaDon getModel() {
+        Integer id = Integer.parseInt(txtId.getText());
         String hoTen = txtHoTen.getText();
         Integer soLuong = Integer.parseInt(txtSoLuong.getText());
         String loaiVe = (String) cboLoaiVe.getSelectedItem();
-        return new HoaDon(1, hoTen, soLuong, loaiVe);
+        return new HoaDon(id, hoTen, soLuong, loaiVe);
 
     }
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
         // TODO add your handling code here:
-//        HoaDon hoaDonNew = getModel();
-//        String result = hoaDonService.addNew(hoaDonNew);
-//        JOptionPane.showMessageDialog(this, result);
-//        loadData(hoaDonService.getList());
+        HoaDon hoaDonNew = getModel();
+        String result = hoaDonService.addNew(hoaDonNew);
+        JOptionPane.showMessageDialog(this, result);
+        loadData(hoaDonService.getList());
     }//GEN-LAST:event_btnAddMouseClicked
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
@@ -291,9 +301,11 @@ public class HoaDonView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHoaDon;
     private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtSoLuong;
     // End of variables declaration//GEN-END:variables
 }

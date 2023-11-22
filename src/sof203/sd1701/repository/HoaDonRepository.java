@@ -52,8 +52,6 @@ public class HoaDonRepository {
         // ket noi co so du lieu va thuc thi truy van
         try (Connection conn = dbConnection.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
-// name =Y
-            String x = "Nguyen Thi" + name;
 
             // thuc thi truy van
             ResultSet rs = ps.executeQuery();
@@ -72,6 +70,26 @@ public class HoaDonRepository {
         }
 
         return list;
+    }
+
+    public Boolean addNew(HoaDon hoaDon) {
+        String sql = "insert into HoaDon(Id, Ten,SoLuong,LoaiVe) values (?,?,?,?)";
+        try (Connection conn = dbConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setObject(1, hoaDon.getId());
+            ps.setObject(2, hoaDon.getTen());
+            ps.setObject(3, hoaDon.getSoLuong());
+            ps.setObject(4, hoaDon.getLoaiVe());
+
+            // thuc thi = executeUpdate
+            int ketQua = ps.executeUpdate();
+            if (ketQua > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static void main(String[] args) {

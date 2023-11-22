@@ -20,16 +20,22 @@ public class HoaDonService {
         return hoaDonRepository.getList();
     }
 
-//    public String addNew(HoaDon hoaDon) {
-//        list.add(hoaDon);
-//        return "Them thanh cong";
-//    }
+    public String addNew(HoaDon hoaDon) {
+        // truyền hoa don sang phan repo để insert
+        Boolean check = hoaDonRepository.addNew(hoaDon);
+        if (check == true) {
+            return "Them thanh cong";
+        } else {
+            return "Them that bai";
+        }
+    }
 //
 //    public String update(int index, HoaDon hoaDon) {
 //        list.set(index, hoaDon);
 //        return "Update thanh cong";
 //    }
 //
+
     public ArrayList<HoaDon> searchByName(String name) {
         // truyen thong tin sang repo de lay du lieu
         ArrayList<HoaDon> listHoaDonByName = hoaDonRepository.searchByName(name);
