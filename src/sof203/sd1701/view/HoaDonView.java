@@ -62,6 +62,7 @@ public class HoaDonView extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +127,13 @@ public class HoaDonView extends javax.swing.JFrame {
 
         jLabel4.setText("Id");
 
+        btnDelete.setText("Delete");
+        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,56 +141,62 @@ public class HoaDonView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(504, 504, 504)
-                            .addComponent(btnAdd))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHoTen)
+                            .addComponent(txtSoLuong)
+                            .addComponent(cboLoaiVe, 0, 246, Short.MAX_VALUE)
+                            .addComponent(txtId))
+                        .addGap(108, 108, 108)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(80, 80, 80)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtHoTen)
-                                    .addComponent(txtSoLuong)
-                                    .addComponent(cboLoaiVe, 0, 246, Short.MAX_VALUE)
-                                    .addComponent(txtId)))))
+                                .addComponent(btnAdd)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnSearch))
+                            .addComponent(btnUpdate)
+                            .addComponent(btnLoadData)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(504, 504, 504)
-                        .addComponent(btnUpdate)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch)
-                    .addComponent(btnLoadData))
-                .addGap(197, 197, 197))
+                        .addComponent(btnDelete)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLoadData)
-                            .addComponent(btnAdd)))
+                            .addComponent(jLabel4)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnDelete)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtHoTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdate)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAdd)
+                            .addComponent(btnSearch))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
@@ -191,9 +205,7 @@ public class HoaDonView extends javax.swing.JFrame {
                             .addComponent(cboLoaiVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnSearch))))
+                        .addComponent(btnLoadData)))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -233,6 +245,7 @@ public class HoaDonView extends javax.swing.JFrame {
         // TODO add your handling code here:
         int index = tblHoaDon.getSelectedRow();
         HoaDon hoaDonChiTiet = hoaDonService.getList().get(index);
+        txtId.setText(hoaDonChiTiet.getId().toString());
         txtHoTen.setText(hoaDonChiTiet.getTen());
         txtSoLuong.setText(hoaDonChiTiet.getSoLuong().toString());
         cboLoaiVe.setSelectedItem(hoaDonChiTiet.getLoaiVe());
@@ -241,11 +254,17 @@ public class HoaDonView extends javax.swing.JFrame {
 
     private void btnUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseClicked
         // TODO add your handling code here:
-//        int index = tblHoaDon.getSelectedRow();
-//        HoaDon hoaDon = getModel();
-//        String result = hoaDonService.update(index, hoaDon);
-//        JOptionPane.showMessageDialog(this, result);
-//        loadData(hoaDonService.getList());
+        // lay thong tin tren form
+        Integer id = Integer.parseInt(txtId.getText().toString());
+        String hoTen = txtHoTen.getText();
+        Integer soLuong = Integer.parseInt(txtSoLuong.getText());
+        String loaiVe = cboLoaiVe.getSelectedItem().toString();
+        HoaDon hoaDon = new HoaDon(id, hoTen, soLuong, loaiVe);
+
+        // truyen hoa don sang service
+        String result = hoaDonService.update(hoaDon);
+        JOptionPane.showMessageDialog(this, result);
+        loadData(hoaDonService.getList());
     }//GEN-LAST:event_btnUpdateMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
@@ -256,6 +275,16 @@ public class HoaDonView extends javax.swing.JFrame {
         ArrayList<HoaDon> listHoaDon = hoaDonService.searchByName(name);
         loadData(listHoaDon);
     }//GEN-LAST:event_btnSearchMouseClicked
+
+    private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
+        // TODO add your handling code here:
+        Integer id = Integer.parseInt(txtId.getText().toString());
+        // truyen id sang service
+        String kq = hoaDonService.delete(id);
+        JOptionPane.showMessageDialog(this, kq);
+        loadData(hoaDonService.getList());
+
+    }//GEN-LAST:event_btnDeleteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -294,6 +323,7 @@ public class HoaDonView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLoadData;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;

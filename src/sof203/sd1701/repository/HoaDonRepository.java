@@ -91,6 +91,44 @@ public class HoaDonRepository {
         }
         return false;
     }
+    public Boolean update(HoaDon hoaDon) {
+        String sql = "update HoaDon set "
+                + "SoLuong  = ?, "
+                + "Ten = ? ,"
+                + "LoaiVe = ?"
+                + " WHERE id =?";
+        try (Connection conn = dbConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setObject(1, hoaDon.getSoLuong());
+            ps.setObject(2, hoaDon.getTen());
+            ps.setObject(3, hoaDon.getLoaiVe());
+            ps.setObject(4, hoaDon.getId());
+
+            // thuc thi = executeUpdate
+            int ketQua = ps.executeUpdate();
+            if (ketQua > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public Boolean delete(Integer id) {
+        String sql = "delete from HoaDon where id = " + id;
+        try (Connection conn = dbConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            int ketQua = ps.executeUpdate();
+            if (ketQua > 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         ArrayList<HoaDon> list = new HoaDonRepository().getList();

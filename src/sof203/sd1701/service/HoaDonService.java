@@ -29,6 +29,16 @@ public class HoaDonService {
             return "Them that bai";
         }
     }
+    
+    public String update(HoaDon hoaDon) {
+        // truyền hoa don sang phan repo để insert
+        Boolean check = hoaDonRepository.update(hoaDon);
+        if (check == true) {
+            return "Update thanh cong";
+        } else {
+            return "Update that bai";
+        }
+    }
 //
 //    public String update(int index, HoaDon hoaDon) {
 //        list.set(index, hoaDon);
@@ -40,5 +50,14 @@ public class HoaDonService {
         // truyen thong tin sang repo de lay du lieu
         ArrayList<HoaDon> listHoaDonByName = hoaDonRepository.searchByName(name);
         return listHoaDonByName;
+    }
+
+    public String delete(Integer id) {
+        Boolean check = hoaDonRepository.delete(id);
+        if (check) {
+            return "Xoa thanh cong";
+        } else {
+            return "Xoa that bai";
+        }
     }
 }
