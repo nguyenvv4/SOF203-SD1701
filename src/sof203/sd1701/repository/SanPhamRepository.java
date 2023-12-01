@@ -18,7 +18,7 @@ public class SanPhamRepository {
     DbConnection dbConnection;
 
     public ArrayList<SanPham> getList() {
-        String sql = "select * from sanpham";
+        String sql = "select * from sanpham Order by so_luong_ton DESC";
         ArrayList<SanPham> listSp = new ArrayList<>();
         try (Connection conn = dbConnection.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
